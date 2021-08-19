@@ -1,0 +1,43 @@
+﻿@model NomadCars.Models.Car
+@using NomadCars.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Car Details";
+}
+<header class="jumbotron">
+    <h1>Nomad Cars</h1>
+    <h2>Details of @Model.CarSpec.Make @Model.CarSpec.Model.GetDisplayName()</h2>
+</header>
+
+
+    <section class="row">
+        <section class="col-lg-4">
+            @if (Model.ImagesList.Count() == 0)
+            {
+                <img src="https://via.placeholder.com/350x300" alt="Image of car" title="image of car" />
+            }
+        </section>
+        <section class="col-lg-6">
+            <h2>@Model.CarSpec.Make @Model.CarSpec.Model.GetDisplayName()</h2>
+            <h4>
+                @Model.TransmissionType | @Model.CarSpec.FuelType.GetDisplayName() |
+                @Model.NumberPlate | @Model.CarSpec.DriveTrain.GetDisplayName() | @Model.Mileage miles
+            </h4>
+        </section>
+        <section class="col-lg-2">
+            <center>
+                <h2>£@Model.Price</h2>
+                <br /><br /><br /><br /> <br /><br />
+                @Html.ActionLink("Enquire", "Enquire", "Purchases", new { id = Model.CarID }, new { @class = "btn btn-success" })
+            </center>
+        </section>
+    </section>
+    <br />
+    @Html.ActionLink("Back", "UsedCars", "Home", new { id = Model.CarID }, new { @class = "btn btn-success" })
+    <br /><br />
+
+
+

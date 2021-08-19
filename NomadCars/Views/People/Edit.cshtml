@@ -1,0 +1,49 @@
+﻿@model NomadCars.Models.Person
+
+@{
+    ViewBag.Title = "Edit";
+}
+<header class="jumbotron">
+    <h1>Nomad Cars</h1>
+    <h2>Editing Personal Details for @Model.FullName</h2>
+</header>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("input:text.date").datepicker({ dateFormat: "dd/MM/yyyy" });
+    });
+</script>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Edit Personal Details</h4>
+    <hr />
+    
+    @Html.Partial("_Form")
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
